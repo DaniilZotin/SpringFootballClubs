@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link th:href="@{/style/CssTable.css}" rel="stylesheet">
+</head>
+<body>
+<form th:method="POST" th:action="@{/create_club}" th:object="${club_create}">
+    <div class="container" >
+        <h2>List of our clubs</h2>
+        <ul class="responsive-table">
+            <li class="table-header">
+                <div class="col col-1">Name club</div>
+                <div class="col col-2">Country</div>
+                <div class="col col-3">Year</div>
+                <div class="col col-4">Rating</div>
+            </li>
+            <li class="table-row">
+                <div class="col col-1" data-label="Name club">
+                    <input type="text" th:field="*{name}">
+                </div>
+                <div class="col col-1" data-label="Country" >
+                    <input type="text" th:field="*{county}">
+                </div>
+                <div class="col col-1" data-label="Year" >
+                    <input type="date" th:field="*{year}">
+                </div>
+                <div class="col col-1" data-label="Rating" >
+                    <input type="number" th:field="*{rating}">
+                </div>
+            </li>
+        </ul>
+        <center>
+            <div>
+                <button class="save_button" type="submit">Save</button>
+            </div>
+        </center>
+    </div>
+</form>
+</body>
+</html>
+

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link th:href="@{/style/CssTable.css}" rel="stylesheet">
+    <title>Title</title>
+</head>
+<body>
+<div class="container">
+    <h2>List of our clubs</h2>
+    <ul class="responsive-table">
+        <li class="table-header">
+            <div class="col col-1">Name club</div>
+            <div class="col col-2">Country</div>
+            <div class="col col-3">Year</div>
+            <div class="col col-4">Rating</div>
+        </li>
+        <li class="table-row" th:each="club: ${clubs}">
+            <div class="col col-1" data-label="Name club" th:text="${club.getName()}">42311</div>
+            <div class="col col-1" data-label="Country" th:text="${club.getCounty()}">42311</div>
+            <div class="col col-1" data-label="Year" th:text="${club.getYear()}">42311</div>
+            <div class="col col-1" data-label="Rating" th:text="${club.getRating()}">42311</div>
+        </li>
+        <div class="all_requests">
+
+            <form th:method="POST" th:action="@{/clubs_sample}" th:object="${samples}">
+                <div class="number_submit">
+                    <input class="input_country" placeholder="Input country" th:field="*{county}" type="text">
+                    <button class="button_submit" type="submit">Submit</button>
+                </div>
+            </form>
+
+            <form method="POST" th:action="@{/delete_club}" th:object="${club_delete}">
+                <div class="delete_div">
+                    <input class="input_club_delete" placeholder="Input club" th:id="name" th:name="name" type="text">
+                    <button class="button_delete" type="submit">Delete</button>
+                </div>
+            </form>
+
+            <form method="GET" th:action="@{/refresh_club}" th:object="${club_refresh}">
+                <div class="refresh_div">
+                    <input class="input_club_refresh" placeholder="Input club" th:id="name" th:name="name" type="text">
+                    <button class="button_refresh" type="submit">Refresh</button>
+                </div>
+            </form>
+
+            <form method="GET" th:action="@{/create_club}">
+                <div class="create_div">
+                    <button class="button_create" type="submit">Create</button>
+                    <p class="text_number" th:text="${number}">20</p>
+                </div>
+            </form>
+        </div>
+    </ul>
+</div>
+</body>
+</html>
+
+
+
